@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>grid-2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Arena-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="stream" transform="translate(-120.000000, -432.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="side-bar" transform="translate(0.000000, 83.000000)">
+                <g id="Group" transform="translate(48.000000, 313.000000)">
+                    <path d="M72,36 L132,36 L132,64 L72,64 L72,36 Z M72,68 L132,68 L132,96 L72,96 L72,68 Z" id="grid-2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="14px" viewBox="0 0 20 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Arena-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="stream-3" transform="translate(-1157.000000, -35.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="header__wrap">
+                <g id="video-solid" transform="translate(1157.000000, 35.000000)">
+                    <path d="M11.6736111,0.5 L1.65972222,0.5 C0.743055556,0.5 0,1.22447917 0,2.11822917 L0,11.8817708 C0,12.7755208 0.743055556,13.5 1.65972222,13.5 L11.6736111,13.5 C12.5902778,13.5 13.3333333,12.7755208 13.3333333,11.8817708 L13.3333333,2.11822917 C13.3333333,1.22447917 12.5902778,0.5 11.6736111,0.5 Z M18.25,1.77630208 L14.4444444,4.33567708 L14.4444444,9.66432292 L18.25,12.2203125 C18.9861111,12.7145833 20,12.2101562 20,11.346875 L20,2.64973958 C20,1.78984375 18.9895833,1.28203125 18.25,1.77630208 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
