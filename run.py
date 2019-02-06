@@ -26,12 +26,16 @@ def render():
 
 @app.route('/rend')
 def rend():
-    if request.args.get('id'):
-        if 'stream' + request.args.get('id') + '.webm' in os.listdir(r'C:\Python27\directorconsole-flutter\video'):
-            subprocess.Popen(["ffmpeg.exe","-i","video\\streamer.webm","video\\streamer.mp4"])
-            subprocess.Popen(["ffmpeg.exe", "-i","video\\stream"+request.args.get('id')+".webm", "video\\game"+request.args.get('id')+".mp4"])
+    dir = request.args.get('dir')
+
+    if request.args.get('id') and dir:
+        if 'stream' + request.args.get('id') + '.webm' in os.listdir('C:\\Python27\\directorconsole-flutter\\video\\'+str(dir)):
+            p1 = subprocess.Popen(["ffmpeg.exe","-i",'video\\'+str(dir)+"\\streamer.webm", 'video\\'+str(dir)+"\\streamer.mp4"])
+            p2 = subprocess.Popen(["ffmpeg.exe", "-i",'video\\'+str(dir)+"\\stream"+request.args.get('id')+".webm", 'video\\'+str(dir)+"\\game"+request.args.get('id')+".mp4"])
+            p1.wait()
+            p2.wait()
             print('starting')
-            render = ThreadedMixCV(request.args.get('id'))
+            render = ThreadedMixCV(request.args.get('id'), request.args.get('dir'),request.args.get('stime'),request.args.get('etime'))
             render.start()
 
             return "ok"
@@ -145,6 +149,17 @@ def insert():
     logging.error(request.json)
     logging.error('/n/n/n')
     session.add(User(r['place'],int(r['point']),r['date'],r['stime'],r['etime'],r['url']))
+    session.commit()
+    logging.error('ok')
+    return 'ok'
+
+@app.route('/add_url', methods=['GET','POST'])
+def add_url():
+    r = json.loads(request.json)
+    logging.error(request.json)
+    logging.error('/n/n/n')
+    query = session.query(User).filter(User.start_time==r['stime'],User.date==r['date'],User.point==int(r['point'])).first()
+    query.url = r['url']
     session.commit()
     logging.error('ok')
     return 'ok'

@@ -31,8 +31,8 @@ class User(Base):
         self.end_time = end_time
         self.url = url
         
-    def __repr__(self):
-        return "<User('%i','%i,'%i','%s',)>" % (self.place,self.point,self.date,self.start_time,self.end_time,self.url)
+    #def __repr__(self):
+       # return "<User('%i','%i,'%i','%s',)>" % (self.place,self.point,self.date,self.start_time,self.end_time,self.url)
 
 
 class Place(Base):

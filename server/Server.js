@@ -2,6 +2,7 @@ import express from 'express';
 var app = express();
 import fs from 'fs';
 import ws from 'ws';
+var mkdirp = require('mkdirp');
 import http from 'http';
 import https from 'https';
 const multer = require('multer');
@@ -9,15 +10,23 @@ const upload = multer();
 var cors = require('cors')
 const request = require("request");
 
+var stime = '';
+var etime = '';
+var dir = '';
 
 var app1 = express();
 app1.use(express.static(__dirname));
 app1.use(cors());
 app1.post('/upload1', upload.any(), (req, res) => {
+    mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
     //console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream1.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream1.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -30,10 +39,15 @@ app1.post('/upload1', upload.any(), (req, res) => {
 });
 
 app1.post('/upload2', upload.any(), (req, res) => {
-    console.log(app1._router.stack);
+    mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
+    //console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream2.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream2.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -46,10 +60,15 @@ app1.post('/upload2', upload.any(), (req, res) => {
 });
 
 app1.post('/upload3', upload.any(), (req, res) => {
-    console.log(app1._router.stack);
+    mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
+    //console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream3.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream3.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -64,18 +83,34 @@ app1.post('/upload3', upload.any(), (req, res) => {
 app1.get('/setUpload',(req,res) => {
     //req.query.num
     console.log('YES\n\n\n')
-    request('http://localhost:5000/render?id='+req.query.num, { json: true }, (err, res, body) => {
+    request('http://localhost:5000/rend?id='+req.query.num+'&dir='+dir+'&stime='+stime+'&etime='+etime, { json: true }, (err, res, body) => {
   if (err) { return console.log(err); }
   console.log(body.url);
   console.log(body.explanation);
 });
 });
 
+app1.get('/stime',(req,res) => {
+    //req.query.num
+   
+    console.log(req.query.dir);
+    stime = req.query.stime;
+    dir = req.query.dir;
+    console.log('YES\n\n\n')
+});
+
+app1.get('/etime',(req,res) => {
+    //req.query.num
+    etime = req.query.etime;
+    console.log('YES\n\n\n')
+});
+
 app1.post('/upload4', upload.any(), (req, res) => {
+    mkdirp('./video/'+dir, function(err) { });
     console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream4.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream4.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -88,10 +123,15 @@ app1.post('/upload4', upload.any(), (req, res) => {
 });
 
 app1.post('/upload5', upload.any(), (req, res) => {
+    mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
     console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream5.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream5.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -104,10 +144,12 @@ app1.post('/upload5', upload.any(), (req, res) => {
 });
 
 app1.post('/upload6', upload.any(), (req, res) => {
+    mkdirp('./video/'+dir, function(err) { 
+});
     console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream6.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream6.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -120,10 +162,13 @@ app1.post('/upload6', upload.any(), (req, res) => {
 });
 
 app1.post('/upload7', upload.any(), (req, res) => {
+    mkdirp('./video/'+dir, function(err) { 
+
+});
     console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream7.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream7.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -136,10 +181,15 @@ app1.post('/upload7', upload.any(), (req, res) => {
 });
 
 app1.post('/upload8', upload.any(), (req, res) => {
+mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
     //console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream8.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream8.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -152,10 +202,15 @@ app1.post('/upload8', upload.any(), (req, res) => {
 });
 
 app1.post('/upload9', upload.any(), (req, res) => {
+mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
     //console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/stream9.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/stream9.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -168,10 +223,15 @@ app1.post('/upload9', upload.any(), (req, res) => {
 });
 
 app1.post('/upload0', upload.any(), (req, res) => {
+mkdirp('./video/'+dir, function(err) { 
+
+    // path exists unless there was an error
+
+});
     //console.log(app1._router.stack);
     console.log('POST /upload/');
     console.log('Files: ', req.files);
-    fs.writeFile("video/streamer.webm", req.files[0].buffer, (err) => {
+    fs.writeFile("./video/"+dir+"/streamer.webm", req.files[0].buffer, (err) => {
         if (err) {
             console.log('Error: ', err);
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086'); 
@@ -179,6 +239,7 @@ app1.post('/upload0', upload.any(), (req, res) => {
         } else {
             //res.header('Access-Control-Allow-Origin', 'https://192.168.1.176:8086');
             res.status(200).send('ok');
+            console.log('Streamer success');
         }
     });
 });
@@ -297,23 +358,27 @@ export default class CallHandler {
             data: client_self.id,
         };
 
+        try
+        {
         this.clients.forEach(function (client) {
             if (client != client_self)
                 client.send(JSON.stringify(msg));
         });
-
+    }
+        catch (e) {console.log('Error '+e.message);}
         this.updatePeers();
     }
 
     onConnection = (client_self, socket) => {
         console.log('connection');
         this.clients.add(client_self);
-
+        try {
         client_self.on("close", (data) => {
             this.clients.delete(client_self);
-            this.onClose(client_self, data)
+            this.onClose(client_self, data);
         });
-
+        }
+        catch (e) {console.log('Error '+e.message);}
         client_self.on("message", message => {
             try {
                 message = JSON.parse(message);
